@@ -1,10 +1,12 @@
-FROM node:14
+FROM node:14-alpine
 
 ENV SERVER_PORT="3000"
 ENV SERVER_HOST="::"
 ENV SCRIPTS_PATH="/scripts"
 
 EXPOSE 3000
+
+RUN apk add --no-cache tini
 
 WORKDIR /docker-script-trigger
 
@@ -20,4 +22,4 @@ RUN npm run build
 COPY ./scripts /scripts
 WORKDIR /scripts
 
-CMD [ "node", "/docker-script-trigger/dist/index.js" ]
+CMD [ "tini", "--", "node", "/docker-script-trigger/dist/index.js" ]
