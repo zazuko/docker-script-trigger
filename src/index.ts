@@ -3,9 +3,9 @@ import fs from 'fs/promises';
 import { exec } from 'child_process';
 
 const server = fastify();
-const port = 3000;
-const host = '::';
-const scriptsPath = './scripts/';
+const port = process.env.SERVER_PORT || 3000;
+const host = process.env.SERVER_HOST || '::';
+const scriptsPath = process.env.SCRIPTS_PATH || './scripts/';
 
 server.get<{ Params: { script_name: string } }>(
   '/run/:script_name',
