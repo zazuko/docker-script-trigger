@@ -1,13 +1,13 @@
-import fastify from 'fastify';
-import fs from 'fs/promises';
-import { exec } from 'child_process';
+const fastify = require('fastify');
+const fs = require('fs/promises');
+const { exec } = require('child_process');
 
 const server = fastify();
 const port = process.env.SERVER_PORT || 3000;
 const host = process.env.SERVER_HOST || '::';
 const scriptsPath = process.env.SCRIPTS_PATH || './scripts/';
 
-server.get<{ Params: { script_name: string } }>(
+server.get(
   '/run/:script_name',
   async (request, reply) => {
     const name = request.params.script_name.replace(/^(\.)+/, '');

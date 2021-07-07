@@ -16,10 +16,9 @@ RUN npm ci
 
 # build the server
 COPY . .
-RUN npm run build
 
 # copy default scripts
 COPY ./scripts /scripts
 WORKDIR /scripts
 
-CMD [ "tini", "--", "node", "/docker-script-trigger/dist/index.js" ]
+CMD [ "tini", "--", "node", "/docker-script-trigger/src/index.js" ]

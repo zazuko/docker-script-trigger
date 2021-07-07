@@ -1,18 +1,20 @@
 // eslint-disable-next-line no-undef
 module.exports = {
   root: true,
-  parser: "@typescript-eslint/parser",
-  plugins: ["@typescript-eslint"],
+  plugins: [],
   extends: [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "airbnb-typescript/base",
   ],
   parserOptions: {
-    project: "./tsconfig.json",
+    ecmaVersion: 2020
+  },
+  env: {
+    es6: true,
+    node: true,
+    browser: true,
   },
   rules: {
     "no-console": "off"
   },
-  ignorePatterns: ["dist", ".eslintrc.js"],
+  ignorePatterns: [".eslintrc.js"],
 };
