@@ -1,3 +1,4 @@
 #!/bin/sh
 
-echo "Hello world"
+echo "Hello stdout!"
+echo "Hello stderr!" >&2
