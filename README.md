@@ -7,7 +7,7 @@ In the Docker image there is already a script `/scripts/hello.sh`.
 To try this image, you can follow those instructions:
 
 ```sh
-docker run --rm -it -p3000:3000 registry.zazuko.com/ludovic.muller/docker-script-trigger:latest
+docker run --rm -it -p3000:3000 ghcr.io/zazuko/docker-script-trigger:latest
 curl -s http://localhost:3000/run/hello | jq
 ```
 
@@ -39,7 +39,7 @@ You can simply build a new Docker image that uses this image as a base.
 For example:
 
 ```Dockerfile
-FROM registry.zazuko.com/ludovic.muller/docker-script-trigger:latest
+FROM ghcr.io/zazuko/docker-script-trigger:latest
 
 # Do your stuff here (copy script files into /scripts, install packages, …)
 ```
