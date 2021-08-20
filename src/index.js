@@ -7,11 +7,12 @@ const port = process.env.SERVER_PORT || 3000;
 const host = process.env.SERVER_HOST || '::';
 const scriptsPath = process.env.SCRIPTS_PATH || './scripts/';
 
-server.get(
+server.post(
   '/run/:script_name',
   async (request, reply) => {
     const name = request.params.script_name.replace(/^(\.)+/, '');
     const scriptPath = `${scriptsPath}/${name}.sh`;
+    const args = request.body;
 
     let fileInfos;
 
@@ -31,10 +32,21 @@ server.get(
       });
     }
 
+    if (!Array.isArray(args)) {
+      return reply.code(400).send({
+        success: false,
+        message: 'expected args in an array'
+      });
+    }
+
+    const argsString = args
+      .map(arg => `"${arg}"`) // TODO: escape
+      .join(' ')
+
     try {
       const { stdout, stderr } = await new Promise(
         // TODO: use spawn instead of exec
-        (resolve, reject) => exec(scriptPath, (error, out, err) => {
+        (resolve, reject) => exec(`"${scriptPath}" ${argsString}`, (error, out, err) => {
           if (error) {
             reject(error);
           } else {
