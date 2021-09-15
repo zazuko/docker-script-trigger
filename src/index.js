@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fastify = require('fastify');
 const fs = require('fs/promises');
 const { exec } = require('child_process');

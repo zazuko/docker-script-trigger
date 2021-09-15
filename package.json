@@ -15,5 +15,8 @@
   },
   "dependencies": {
     "fastify": "^3.18.1"
+  },
+  "bin": {
+    "docker-script-trigger": "./src/index.js"
   }
 }
