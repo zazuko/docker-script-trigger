@@ -7,7 +7,7 @@ const glob = promisify(require('glob'));
 const { exec } = require('child_process');
 const path = require('path');
 
-const port = process.env.SERVER_PORT || 3000;
+const port = process.env.SERVER_PORT || process.env.PORT || 3000;
 const host = process.env.SERVER_HOST || '::';
 const scriptsPath = process.env.SCRIPTS_PATH || './scripts/';
 
