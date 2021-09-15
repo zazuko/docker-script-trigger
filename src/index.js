@@ -67,6 +67,8 @@ const route = script => async (request, reply) => {
     server.post(`/run/${parsedpath.name}`, route(realpath));
   }
 
+  server.get('/health', async (_request, reply) => reply.code(200).send("ok"));
+
   const address = await new Promise((resolve, reject) => server.listen(port, host, (err, address) => {
     if (err) reject(err);
     else resolve(address);
