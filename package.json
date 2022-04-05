@@ -1,5 +1,5 @@
 {
-  "name": "docker-script-trigger",
+  "name": "@zazuko/docker-script-trigger",
   "version": "0.0.3",
   "description": "Trigger a script in a Docker container",
   "main": "src/index.js",
